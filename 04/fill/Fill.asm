@@ -12,57 +12,55 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
-(LOOP)
-    @KBD  //keyboard
-    D = M
-    @BLACK 
-    D; JNE
-    @WHITE 
-    D; JEQ 
-    @LOOP 
-    0; JMP 
+
+(RESTART)
+@SCREEN
+D=A
+@COLORSTART
+M=D	//設定填色開始位置為RAM0
+
+(KBDCHECK) //確認鍵盤是否有讀到
+@KBD
+D=M
+@BLACK //如果有讀出鍵盤，跳轉黑色
+D;JGT
+@WHITE //反之，沒有則跳轉白色
+0;JMP
+
 (BLACK)
-//從16384開始，屏幕規格是256*512， 每行有512/16 = 32个16位寄存器，一共有32*256=8192个  
-    @SCREEN 
-    D = A
-    @i 
-    M = D   //i的值 = 16384 
-    (BLACKLOOP)
-        @i 
-        D = M 
-        @KBD 
-        D = D - A 
-        @LOOP   //如果屏幕已經满了（基地址指向键盤了）  直接回去繼續讀鍵盤
-        D; JEQ
-        D = -1 
-        @i 
-        A = M     
-        M = D //填满这个寄存器  但此时i中存的还是这个寄存器的地址
-        D = 1 
-        @i 
-        D = D + M 
-        M = D   
-        @BLACKLOOP 
-        0; JMP 
-(WHITE) 
-    @SCREEN 
-    D = A 
-    @i 
-    M = D 
-    (WHITELOOP)
-        @i 
-        D = M 
-        @KBD 
-        D = D - A 
-        @LOOP 
-        D; JEQ 
-        D = 0 
-        @i 
-        A = M 
-        M = D 
-        D = 1  
-        @i 
-        D = D + M 
-        M = D 
-        @WHITELOOP
-        0; JMP  
+    // 設定draw的值為-1 (1111111111111111)黑色.
+    @COLOR
+    M=-1
+    @DRAW
+    0;JMP
+
+(WHITE)
+    // 設定draw的值為0 (0000000000000000)白色.
+    @COLOR
+    M=0
+    @DRAW
+    0;JMP
+
+(DRAW) //著色迴圈 
+@COLOR	
+D=M	//確認要用什麼顏色填滿屏幕
+
+@COLORSTART
+A=M	
+M=D	
+
+@COLORSTART
+D=M+1	//下一個位置
+
+@KBD
+D=A-D	//KBD-SCREEN=A
+
+@COLORSTART
+M=M+1	//INC TO NEXT PIXEL
+A=M
+
+@DRAW
+D;JGT	//當整個屏幕填滿，跳出
+
+@RESTART
+0;JMP
