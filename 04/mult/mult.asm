@@ -7,6 +7,7 @@
 // (R0, R1, R2 refer to RAM[0], RAM[1], and RAM[2], respectively.)
 
 // Put your code here.
+//此程式為自行完成
 //按照老師課堂上講的，先將R0*R1=R2用C先試著寫出來
 // 令R0 = a
 // 令R1 = b
