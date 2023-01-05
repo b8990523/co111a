@@ -13,6 +13,7 @@ CHIP Not {
     OUT out;
 
     PARTS:
+    //此程式為自行完成
     // Put your code here:
     Nand(a=in, b=in, out=out);
 }
