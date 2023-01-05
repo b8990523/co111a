@@ -20,6 +20,7 @@ CHIP Computer {
 
     PARTS:
     // Put your code here:
+    //此程式為上網查找過邏輯圖後，參考網路上的寫法，對照完成
     ROM32K(address = pc, out = instruction);
     Memory(in = outM, load = writeM, address = addressM, out = inM);
     CPU(inM = inM, instruction = instruction, reset = reset, outM = outM, writeM = writeM, addressM = addressM, pc = pc);

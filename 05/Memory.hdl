@@ -28,6 +28,7 @@ CHIP Memory {
 
     PARTS:
     // Put your code here:
+    //此程式為上網查找過邏輯圖後，參考網路上的寫法，對照完成
     // 00 01都是RAM 10是屏幕 11是键盘
     DMux4Way(in = load, sel = address[13..14], a = loadA, b = loadB, c = loadScreen, d = loadKeyboard);
 

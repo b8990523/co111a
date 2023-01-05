@@ -43,7 +43,7 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
-    
+    //此程式為上網查找過邏輯圖後，參考網路上的寫法，對照完成
     Mux16(a = instruction, b = ALUoutput, sel = instruction[15], out = inAregister); 
    
     Not(in = instruction[15], out = isA);
