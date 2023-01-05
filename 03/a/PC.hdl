@@ -17,6 +17,7 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
+    //此程式為上網查找過邏輯閘後，自行完成
     Inc16(in=loop,out=out1);
 
     Mux16(a=loop,b=out1,sel=inc,out=incout);

@@ -15,6 +15,7 @@ CHIP Bit {
 
     PARTS:
     // Put your code here:
+    //此程式為上網查找過邏輯閘後，自行完成
     Mux(a=do,b=in,sel=load,out=mo);
     DFF(in=mo,out=do,out=out);
 }

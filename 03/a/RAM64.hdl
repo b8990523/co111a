@@ -16,6 +16,7 @@ CHIP RAM64 {
 
     PARTS:
     // Put your code here:
+    //此程式為上網查找過邏輯閘後，自行完成
     DMux8Way(in = load, sel = address[3..5], a = in0, b = in1, c = in2, d = in3, e = in4, f = in5, g = in6, h = in7);
     RAM8(in=in,load=in0,address=address[0..2],out=out0);
     RAM8(in=in,load=in1,address=address[0..2],out=out1);
