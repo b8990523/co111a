@@ -14,6 +14,7 @@ CHIP Xor {
 
     PARTS:
     // Put your code here:
+    //此程式為自行完成
     Not(in=a,out=Nota);
     Not(in=b,out=Notb);
     Nand(a=Nota,b=b,out=NotaNandb);
