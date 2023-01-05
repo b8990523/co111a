@@ -43,6 +43,7 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
+   //有上網查詢過邏輯閘，且參考網路上大家的寫法，後修改一些內容完成
     Mux16(a=x, b[0..15]=false, sel=zx, out=xMuxZero);
 
     Not16(in=xMuxZero, out=xBar);

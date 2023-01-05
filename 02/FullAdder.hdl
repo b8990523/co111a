@@ -14,6 +14,8 @@ CHIP FullAdder {
 
     PARTS:
     // Put you code here:
+    //
+    //此程式為上網查詢過邏輯閘後自行完成
     HalfAdder(a=a, b=b, sum=S1, carry=c1);
     HalfAdder(a=S1, b=c, sum=sum, carry=c2);
     Or(a=c1, b=c2, out=carry);

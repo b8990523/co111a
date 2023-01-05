@@ -14,6 +14,7 @@ CHIP Inc16 {
 
     PARTS:
    // Put you code here:
+   //有上網查詢過邏輯閘，且參考網路上大家的寫法，後修改一些內容完成
     HalfAdder(a=in[0],b=true,sum=out[0],carry=c1);
     HalfAdder(a=in[1],b=c1,sum=out[1],carry=c2);
     HalfAdder(a=in[2],b=c2,sum=out[2],carry=c3);
